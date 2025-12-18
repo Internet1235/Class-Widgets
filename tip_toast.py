@@ -298,7 +298,9 @@ class tip_toast(QWidget):
         self.opacity_animation.setEasingCurve(QEasingCurve.Type.InOutQuad)
 
         if sound_to_play:
-            self.playsound(sound_to_play)
+            QTimer.singleShot(
+                0, lambda: self.playsound(sound_to_play)
+            )
 
         self.geometry_animation.start()
         self.opacity_animation.start()
